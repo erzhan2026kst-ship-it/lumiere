@@ -1,0 +1,9 @@
+# Исходники и мусор, которым не место в репозитории сайта
+*.mp4
+*.mov
+*.mkv
+*.avi
+site/
+lumiere-site.zip
+.DS_Store
+Thumbs.db
