@@ -73,6 +73,8 @@
 }
 
 *{box-sizing:border-box}
+/* атрибут hidden должен побеждать любые авторские display — иначе скрытые блоки видны */
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{
   margin:0;
