@@ -318,8 +318,10 @@ section{scroll-margin-top:92px}
 .card .meta{display:block;margin-top:7px;font:400 11px/1.4 var(--mono);letter-spacing:.04em;color:var(--ink-2)}
 
 /* лучший кадр листа — обведён карандашом и растянут на две колонки */
-.gal .card:first-child{grid-column:span 2}
-.gal .card:first-child .card-frame{aspect-ratio:auto;flex:1;min-height:0}
+.gal .card:first-child{grid-column:span 2;grid-row:span 2}
+.gal .card.wide{grid-column:span 2}
+/* 1 квадрат 2×2 + 1 широкая + 6 обычных = ровно 12 ячеек, сетка закрывается без сирот */
+.gal .card:first-child .card-frame,.gal .card.wide .card-frame{aspect-ratio:auto;flex:1;min-height:0}
 .pencil{
   position:absolute;z-index:3;pointer-events:none;
   inset:13px -13px 54px -12px;
@@ -551,7 +553,8 @@ footer{border-top:1px solid var(--line);padding:38px 0 52px}
   .step-n{font-size:52px}
 
   .gal{grid-template-columns:repeat(2,1fr);gap:34px 16px}
-  .gal .card:first-child .card-frame{aspect-ratio:16/10;flex:none}
+  .gal .card:first-child{grid-row:span 1}
+  .gal .card:first-child .card-frame,.gal .card.wide .card-frame{aspect-ratio:16/10;flex:none}
   .pencil{inset:12px -9px 48px -9px}
   .card b{font-size:20px}
 
@@ -584,7 +587,7 @@ footer{border-top:1px solid var(--line);padding:38px 0 52px}
   .kicker::after{display:none}
   h1{font-size:clamp(50px,15vw,64px)}
   .gal{grid-template-columns:1fr}
-  .gal .card:first-child{grid-column:span 1}
+  .gal .card:first-child,.gal .card.wide{grid-column:span 1}
   .card-frame{aspect-ratio:16/11}
   .test-s{font-size:8px}
   .thumb-i{width:66px;height:66px}
@@ -817,7 +820,7 @@ footer{border-top:1px solid var(--line);padding:38px 0 52px}
         </span>
         <b>Барбершоп «Аркан»</b><span class="meta">1080p · 9:16 · хук 2 с</span>
       </button>
-      <button class="card" data-i="7">
+      <button class="card wide" data-i="7">
         <span class="card-no"><span>27A ▸</span><span>LS</span></span>
         <span class="card-frame" style="--scene:linear-gradient(166deg,#0E1210,#2A3A2E 42%,#8C8A5E 72%,#EFD9A2)">
           <span class="card-badge">Love Story</span><span class="card-dur">1:12</span>
