@@ -135,12 +135,6 @@ button{font:inherit;color:inherit;background:none;border:0}
 }
 .nav a:hover{color:var(--text);background:var(--glass)}
 .top-act{display:flex;align-items:center;gap:12px}
-.icon-btn{
-  width:38px;height:38px;border-radius:10px;border:1px solid var(--line);
-  display:grid;place-items:center;cursor:pointer;color:var(--muted);background:var(--glass);
-  transition:color .3s var(--ease),border-color .3s var(--ease);
-}
-.icon-btn:hover{color:var(--metal);border-color:var(--metal-soft)}
 
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;
@@ -174,8 +168,6 @@ h1.accent{width:fit-content}
   background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
   font-style:normal;
 }
-.lead{color:var(--muted);font-size:19.5px;font-weight:400;max-width:46ch;margin-top:28px;line-height:1.62;text-wrap:pretty}
-
 .hero-act{display:flex;gap:14px;flex-wrap:wrap;margin-top:44px}
 
 /* ═════════ кадры ═════════ */
@@ -251,12 +243,14 @@ section{scroll-margin-top:96px}
 
 /* услуги — четыре равные колонки, ни одна не выделяется */
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-.svc-item{display:flex;flex-direction:column;padding:0 30px 0 0;border-right:1px solid var(--line)}
+.svc-item{display:flex;flex-direction:column;padding:0 30px 0 0;border-right:1px solid var(--line);transition:border-color .4s var(--ease)}
 .svc-item:not(:first-child){padding-left:30px}
 .svc-item:last-child{border-right:0;padding-right:0}
+.svc-item:hover{border-color:var(--metal-soft)}
 .svc-item h3{font-size:23px;margin-top:18px}
 .svc-item p{color:var(--muted);font-weight:400;margin-top:16px;font-size:15.5px;line-height:1.65}
-.svc-ico{color:var(--metal)}
+.svc-ico{color:var(--metal);transition:color .35s var(--ease)}
+.svc-item:hover .svc-ico{color:var(--iris)}
 
 .tick{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:14px}
 .tick li{position:relative;padding-left:28px;font-size:15.5px;font-weight:400;color:var(--muted);line-height:1.6}
@@ -298,7 +292,10 @@ section{scroll-margin-top:96px}
 .step p{font-size:15px;font-weight:400;color:var(--muted);max-width:32ch;line-height:1.62}
 
 /* галерея */
-.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;align-items:start}
+/* первая работа — флагман, крупнее остальных: та же карточка, что открывает hero */
+.gal .card:first-child{grid-column:span 2}
+.gal .card:first-child .card-frame{aspect-ratio:13/9}
 .card{border:0;background:none;padding:0;text-align:left;cursor:pointer;display:block}
 .card-frame{
   position:relative;aspect-ratio:9/13;border-radius:13px;overflow:hidden;
@@ -320,7 +317,6 @@ section{scroll-margin-top:96px}
 .card b{display:block;font-family:"Prata",serif;font-weight:400;font-size:17.5px;margin-top:16px;letter-spacing:-.005em}
 .card span{display:block;font-size:12.5px;color:var(--faint);margin-top:7px;font-family:"JetBrains Mono",monospace;letter-spacing:.03em}
 
-/* тарифы */
 /* вопросы */
 .faq{border-top:1px solid var(--line)}
 details{border-bottom:1px solid var(--line)}
@@ -643,6 +639,7 @@ footer{border-top:1px solid var(--line);margin-top:110px;padding:48px 0 64px}
   .hero-tag .label{font-size:18px;letter-spacing:.1em}
   .hero-tag hr{display:none}
   .gal{grid-template-columns:1fr;gap:18px}
+  .gal .card:first-child{grid-column:span 1}
   .card-frame{aspect-ratio:16/11}
   .frame-ttl{font-size:15px}
   .fset-t{gap:12px;font-size:21px}
